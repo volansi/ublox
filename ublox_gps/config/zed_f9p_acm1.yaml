@@ -1,4 +1,4 @@
-device: /dev/ttyACM0
+device: /dev/ttyACM1
 frame_id: gps
 uart1:
   baudrate: 115200
@@ -10,18 +10,13 @@ publish:
     hui: false
 
   nav:
-    posllh: true
-    posecef: true
-    relposned: true
-    velned: true
-    
+    posecef: false
+
   rxm:
     raw: true
-    rawx: true
-    rtcm: true
 
 # raw data
 raw_data: true
 raw_data_stream:
-  dir: /data/ubx_acm0
+  dir: /data/ubx_acm1
   publish: true
