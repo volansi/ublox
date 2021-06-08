@@ -1,0 +1,11 @@
+# /etc/udev/rules.d/99-usb-serial.rules
+# udevadm info --attribute-walk -n /dev/ttyUSB0  |grep serial (can be used to get serial number)
+# udevadm control --reload-rules (reload rules)
+# udevadm trigger (re-add all devices)
+# see https://wiki.archlinux.org/index.php/Bus_pirate
+
+SUBSYSTEM=="tty", ATTRS{serial}=="A1041SJV", SYMLINK+="ttyUSB_epson"
+SUBSYSTEM=="tty", ATTRS{serial}=="FTB7Z5YP", SYMLINK+="ttyUSB_px4"
+SUBSYSTEM=="tty", ATTRS{serial}=="pri", SYMLINK+="ttyACM_pri"
+SUBSYSTEM=="tty", ATTRS{serial}=="sec", SYMLINK+="ttyACM_sec"
+
