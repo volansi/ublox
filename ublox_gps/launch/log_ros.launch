@@ -1,0 +1,11 @@
+<launch>
+  <node pkg="rosbag" type="record" name="rosbag_record_ros"
+  args="-O /data/current/ros_tf --split --size=2048
+/diagnostics
+/nodelet_manager/bond
+/rosout
+/rosout_agg
+/tf
+/tf_static
+"/>
+</launch>

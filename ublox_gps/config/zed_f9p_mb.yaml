@@ -7,10 +7,10 @@ save:
                             # Manager, Antenna, and Logging Configuration
   device: 4                 # Save to EEPROM
 
-device: /dev/ttyACM_pri
-frame_id: gps_movingbase
-dynamic_model: airborne2
-#dynamic_model: stationary   # Velocity restricted to 0 m/s. Zero dynamics 
+device: /dev/ttyACM_mb
+frame_id: gps_mb
+#dynamic_model: airborne2     
+dynamic_model: stationary    # Velocity restricted to 0 m/s. Zero dynamics
                             # assumed.
 fix_mode: auto
 dr_limit: 0
@@ -79,5 +79,5 @@ publish:
     
 raw_data: true
 raw_data_stream:
-  dir: /data/movingbase/
+  dir: /data/mb/
   publish: true

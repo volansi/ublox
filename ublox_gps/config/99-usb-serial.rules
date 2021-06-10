@@ -8,4 +8,7 @@ SUBSYSTEM=="tty", ATTRS{serial}=="A1041SJV", SYMLINK+="ttyUSB_epson"
 SUBSYSTEM=="tty", ATTRS{serial}=="FTB7Z5YP", SYMLINK+="ttyUSB_px4"
 SUBSYSTEM=="tty", ATTRS{serial}=="pri", SYMLINK+="ttyACM_pri"
 SUBSYSTEM=="tty", ATTRS{serial}=="sec", SYMLINK+="ttyACM_sec"
+SUBSYSTEM=="tty", ATTRS{serial}=="rov", SYMLINK+="ttyACM_rov"
+SUBSYSTEM=="tty", ATTRS{serial}=="mb", SYMLINK+="ttyACM_mb"
+SUBSYSTEM=="tty", ATTRS{serial}=="base", SYMLINK+="ttyACM_base"
 
