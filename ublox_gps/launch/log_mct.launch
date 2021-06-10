@@ -1,11 +1,6 @@
 <launch>
-  <include file="$(find config)/launch/log_ros.launch" />
-  <include file="$(find config)/launch/log_px4.launch" />
-<!--  
-  <include file="$(find config)/launch/log_ti.launch" />
-  <include file="$(find config)/launch/log_rs.launch" />
--->
-  <include file="$(find config)/launch/log_piksi0.launch" />
-  <include file="$(find config)/launch/log_piksi1.launch" />
-  <include file="$(find config)/launch/log_epson.launch" />
+  <include file="$(find ublox_gps)/launch/log_ros.launch" />
+  <include file="$(find ublox_gps)/launch/log_rov.launch" />
+  <include file="$(find ublox_gps)/launch/log_rover.launch" />
+  <include file="$(find ublox_gps)/launch/log_movingbase.launch" />
 </launch>

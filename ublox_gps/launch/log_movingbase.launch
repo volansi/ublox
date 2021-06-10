@@ -1,0 +1,16 @@
+<launch>
+  <node pkg="rosbag" type="record" name="rosbag_record_movingbase"
+  args="-O /data/current/ublox_movingbase --split --size=2048
+/ublox_movingbase/fix
+/ublox_movingbase/fix_velocity
+/ublox_movingbase/monhw
+/ublox_movingbase/navclock
+/ublox_movingbase/navheading
+/ublox_movingbase/navpvt
+/ublox_movingbase/navrelposned
+/ublox_movingbase/navsat
+/ublox_movingbase/navstatus
+/ublox_movingbase/raw_data_stream
+/ublox_movingbase/rxmrtcm
+"/>
+</launch>

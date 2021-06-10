@@ -1,0 +1,16 @@
+<launch>
+  <node pkg="rosbag" type="record" name="rosbag_record_rover"
+  args="-O /data/current/ublox_rover --split --size=2048
+/ublox_rover/fix
+/ublox_rover/fix_velocity
+/ublox_rover/monhw
+/ublox_rover/navclock
+/ublox_rover/navheading
+/ublox_rover/navpvt
+/ublox_rover/navrelposned
+/ublox_rover/navsat
+/ublox_rover/navstatus
+/ublox_rover/raw_data_stream
+/ublox_rover/rxmrtcm
+"/>
+</launch>

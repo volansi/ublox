@@ -1,14 +1,5 @@
 <launch>
-  <include file="$(find config)/launch/epson_g364_pps.launch" />
-  <include file="$(find config)/launch/piksi0.launch" />
-  <include file="$(find config)/launch/piksi1.launch" />
-  <include file="$(find config)/launch/px4.launch" />
-
-<!--
-  <include file="$(find config)/launch/rs_rgb.launch" />
-  <include file="$(find config)/launch/ti1642.launch" />
-
-  <node pkg="tf" type="static_transform_publisher" name="radar_rgb_link" args="0 0 0.1 0 0 0 ti_mmwave_0 camera_link 100"/>
--->
-
+  <include file="$(find ublox_gps)/launch/f9p_rov.launch" />
+  <include file="$(find ublox_gps)/launch/f9p_rover.launch" />
+  <include file="$(find ublox_gps)/launch/f9p_movingbase.launch" />
 </launch>
