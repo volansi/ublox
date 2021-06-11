@@ -2,4 +2,9 @@
   <include file="$(find ublox_gps)/launch/f9p_rov.launch" />
   <include file="$(find ublox_gps)/launch/f9p_rover.launch" />
   <include file="$(find ublox_gps)/launch/f9p_movingbase.launch" />
+	
+  <node pkg="ublox_gps" name="rtcm_receiver" type="rtcm_receiver.py" respawn="true" respawn_delay="5"/>
+  <node pkg="ublox_gps" name="mavlink_router" type="mavlink_router.py" respawn="true" respawn_delay="5"/>
+
+
 </launch>
