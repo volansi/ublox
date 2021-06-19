@@ -1,0 +1,665 @@
+# primary moving base, 230400 baud uart1/2, ubx on 1&usb, rtcm on 2&usb
+# todo check motion model STAT/SEA for ground and AIR2 for MCT
+# using UTC time since that is what PX4 does 
+# ./output/cfgtool-release cfg2rx -p /dev/ttyACM0 -l Flash -x -i f9p_pri.txt
+# HPG 1.13 (ZED-F9P), layer RAM (659/1212 items)
+CFG-BDS-USE_PRN_1_TO_5                  false                          # = 0, 0x10340014, L
+CFG-GEOFENCE-CONFLVL                    L000                           # = 0, 0x20240011, E1
+CFG-GEOFENCE-USE_PIO                    false                          # = 0, 0x10240012, L
+CFG-GEOFENCE-PINPOL                     LOW_IN                         # = 0, 0x20240013, E1
+CFG-GEOFENCE-PIN                        3                              # 0x20240014, U1
+CFG-GEOFENCE-USE_FENCE1                 false                          # = 0, 0x10240020, L
+CFG-GEOFENCE-FENCE1_LAT                 0                              # 0x40240021, I4
+CFG-GEOFENCE-FENCE1_LON                 0                              # 0x40240022, I4
+CFG-GEOFENCE-FENCE1_RAD                 0                              # 0x40240023, U4
+CFG-GEOFENCE-USE_FENCE2                 false                          # = 0, 0x10240030, L
+CFG-GEOFENCE-FENCE2_LAT                 0                              # 0x40240031, I4
+CFG-GEOFENCE-FENCE2_LON                 0                              # 0x40240032, I4
+CFG-GEOFENCE-FENCE2_RAD                 0                              # 0x40240033, U4
+CFG-GEOFENCE-USE_FENCE3                 false                          # = 0, 0x10240040, L
+CFG-GEOFENCE-FENCE3_LAT                 0                              # 0x40240041, I4
+CFG-GEOFENCE-FENCE3_LON                 0                              # 0x40240042, I4
+CFG-GEOFENCE-FENCE3_RAD                 0                              # 0x40240043, U4
+CFG-GEOFENCE-USE_FENCE4                 false                          # = 0, 0x10240050, L
+CFG-GEOFENCE-FENCE4_LAT                 0                              # 0x40240051, I4
+CFG-GEOFENCE-FENCE4_LON                 0                              # 0x40240052, I4
+CFG-GEOFENCE-FENCE4_RAD                 0                              # 0x40240053, U4
+CFG-HW-ANT_CFG_VOLTCTRL                 false                          # = 0, 0x10a3002e, L
+CFG-HW-ANT_CFG_SHORTDET                 false                          # = 0, 0x10a3002f, L
+CFG-HW-ANT_CFG_SHORTDET_POL             true                           # = 1, 0x10a30030, L
+CFG-HW-ANT_CFG_OPENDET                  false                          # = 0, 0x10a30031, L
+CFG-HW-ANT_CFG_OPENDET_POL              true                           # = 1, 0x10a30032, L
+CFG-HW-ANT_CFG_PWRDOWN                  false                          # = 0, 0x10a30033, L
+CFG-HW-ANT_CFG_PWRDOWN_POL              true                           # = 1, 0x10a30034, L
+CFG-HW-ANT_CFG_RECOVER                  false                          # = 0, 0x10a30035, L
+CFG-HW-ANT_SUP_SWITCH_PIN               16                             # 0x20a30036, U1
+CFG-HW-ANT_SUP_SHORT_PIN                15                             # 0x20a30037, U1
+CFG-HW-ANT_SUP_OPEN_PIN                 14                             # 0x20a30038, U1
+CFG-HW-ANT_SUP_ENGINE                   EXT                            # = 0, 0x20a30054, E1
+CFG-HW-ANT_SUP_SHORT_THR                0                              # 0x20a30055, U1
+CFG-HW-ANT_SUP_OPEN_THR                 0                              # 0x20a30056, U1
+CFG-I2C-ADDRESS                         132                            # 0x20510001, U1
+CFG-I2C-EXTENDEDTIMEOUT                 false                          # = 0, 0x10510002, L
+CFG-I2C-ENABLED                         true                           # = 1, 0x10510003, L
+CFG-I2CINPROT-UBX                       true                           # = 1, 0x10710001, L
+CFG-I2CINPROT-NMEA                      true                           # = 1, 0x10710002, L
+CFG-I2CINPROT-RTCM3X                    true                           # = 1, 0x10710004, L
+CFG-I2COUTPROT-UBX                      true                           # = 1, 0x10720001, L
+CFG-I2COUTPROT-NMEA                     true                           # = 1, 0x10720002, L
+CFG-I2COUTPROT-RTCM3X                   true                           # = 1, 0x10720004, L
+CFG-INFMSG-UBX_I2C                      0x00                           # 0x20920001, X1
+CFG-INFMSG-UBX_UART1                    0x00                           # 0x20920002, X1
+CFG-INFMSG-UBX_UART2                    0x00                           # 0x20920003, X1
+CFG-INFMSG-UBX_USB                      0x00                           # 0x20920004, X1
+CFG-INFMSG-UBX_SPI                      0x00                           # 0x20920005, X1
+CFG-INFMSG-NMEA_I2C                     ERROR|WARNING|NOTICE           # = 0x07, 0x20920006, X1
+CFG-INFMSG-NMEA_UART1                   ERROR|WARNING|NOTICE           # = 0x07, 0x20920007, X1
+CFG-INFMSG-NMEA_UART2                   ERROR|WARNING|NOTICE           # = 0x07, 0x20920008, X1
+CFG-INFMSG-NMEA_USB                     ERROR|WARNING|NOTICE           # = 0x07, 0x20920009, X1
+CFG-INFMSG-NMEA_SPI                     ERROR|WARNING|NOTICE           # = 0x07, 0x2092000a, X1
+CFG-ITFM-BBTHRESHOLD                    3                              # 0x20410001, U1
+CFG-ITFM-CWTHRESHOLD                    15                             # 0x20410002, U1
+CFG-ITFM-ENABLE                         false                          # = 0, 0x1041000d, L
+CFG-ITFM-ANTSETTING                     UNKNOWN                        # = 0, 0x20410010, E1
+CFG-ITFM-ENABLE_AUX                     false                          # = 0, 0x10410013, L
+CFG-LOGFILTER-RECORD_ENA                false                          # = 0, 0x10de0002, L
+CFG-LOGFILTER-ONCE_PER_WAKE_UP_ENA      false                          # = 0, 0x10de0003, L
+CFG-LOGFILTER-APPLY_ALL_FILTERS         false                          # = 0, 0x10de0004, L
+CFG-LOGFILTER-MIN_INTERVAL              0                              # 0x30de0005, U2
+CFG-LOGFILTER-TIME_THRS                 0                              # 0x30de0006, U2
+CFG-LOGFILTER-SPEED_THRS                0                              # 0x30de0007, U2
+CFG-LOGFILTER-POSITION_THRS             0                              # 0x40de0008, U4
+CFG-MOT-GNSSSPEED_THRS                  0                              # 0x20250038, U1
+CFG-MOT-GNSSDIST_THRS                   0                              # 0x3025003b, U2
+CFG-MSGOUT-NMEA_ID_DTM_UART1            0                              # 0x209100a7, U1
+CFG-MSGOUT-NMEA_ID_DTM_UART2            0                              # 0x209100a8, U1
+CFG-MSGOUT-NMEA_ID_DTM_SPI              0                              # 0x209100aa, U1
+CFG-MSGOUT-NMEA_ID_DTM_I2C              0                              # 0x209100a6, U1
+CFG-MSGOUT-NMEA_ID_DTM_USB              0                              # 0x209100a9, U1
+CFG-MSGOUT-NMEA_ID_GBS_UART1            0                              # 0x209100de, U1
+CFG-MSGOUT-NMEA_ID_GBS_UART2            0                              # 0x209100df, U1
+CFG-MSGOUT-NMEA_ID_GBS_SPI              0                              # 0x209100e1, U1
+CFG-MSGOUT-NMEA_ID_GBS_I2C              0                              # 0x209100dd, U1
+CFG-MSGOUT-NMEA_ID_GBS_USB              0                              # 0x209100e0, U1
+CFG-MSGOUT-NMEA_ID_GGA_UART1            1                              # 0x209100bb, U1
+CFG-MSGOUT-NMEA_ID_GGA_UART2            1                              # 0x209100bc, U1
+CFG-MSGOUT-NMEA_ID_GGA_SPI              1                              # 0x209100be, U1
+CFG-MSGOUT-NMEA_ID_GGA_I2C              1                              # 0x209100ba, U1
+CFG-MSGOUT-NMEA_ID_GGA_USB              1                              # 0x209100bd, U1
+CFG-MSGOUT-NMEA_ID_GLL_UART1            1                              # 0x209100ca, U1
+CFG-MSGOUT-NMEA_ID_GLL_UART2            1                              # 0x209100cb, U1
+CFG-MSGOUT-NMEA_ID_GLL_SPI              1                              # 0x209100cd, U1
+CFG-MSGOUT-NMEA_ID_GLL_I2C              1                              # 0x209100c9, U1
+CFG-MSGOUT-NMEA_ID_GLL_USB              1                              # 0x209100cc, U1
+CFG-MSGOUT-NMEA_ID_GNS_UART1            0                              # 0x209100b6, U1
+CFG-MSGOUT-NMEA_ID_GNS_UART2            0                              # 0x209100b7, U1
+CFG-MSGOUT-NMEA_ID_GNS_SPI              0                              # 0x209100b9, U1
+CFG-MSGOUT-NMEA_ID_GNS_I2C              0                              # 0x209100b5, U1
+CFG-MSGOUT-NMEA_ID_GNS_USB              0                              # 0x209100b8, U1
+CFG-MSGOUT-NMEA_ID_GRS_UART1            0                              # 0x209100cf, U1
+CFG-MSGOUT-NMEA_ID_GRS_UART2            0                              # 0x209100d0, U1
+CFG-MSGOUT-NMEA_ID_GRS_SPI              0                              # 0x209100d2, U1
+CFG-MSGOUT-NMEA_ID_GRS_I2C              0                              # 0x209100ce, U1
+CFG-MSGOUT-NMEA_ID_GRS_USB              0                              # 0x209100d1, U1
+CFG-MSGOUT-NMEA_ID_GSA_UART1            1                              # 0x209100c0, U1
+CFG-MSGOUT-NMEA_ID_GSA_UART2            1                              # 0x209100c1, U1
+CFG-MSGOUT-NMEA_ID_GSA_SPI              1                              # 0x209100c3, U1
+CFG-MSGOUT-NMEA_ID_GSA_I2C              1                              # 0x209100bf, U1
+CFG-MSGOUT-NMEA_ID_GSA_USB              1                              # 0x209100c2, U1
+CFG-MSGOUT-NMEA_ID_GST_UART1            0                              # 0x209100d4, U1
+CFG-MSGOUT-NMEA_ID_GST_UART2            0                              # 0x209100d5, U1
+CFG-MSGOUT-NMEA_ID_GST_SPI              0                              # 0x209100d7, U1
+CFG-MSGOUT-NMEA_ID_GST_I2C              0                              # 0x209100d3, U1
+CFG-MSGOUT-NMEA_ID_GST_USB              0                              # 0x209100d6, U1
+CFG-MSGOUT-NMEA_ID_GSV_UART1            1                              # 0x209100c5, U1
+CFG-MSGOUT-NMEA_ID_GSV_UART2            1                              # 0x209100c6, U1
+CFG-MSGOUT-NMEA_ID_GSV_SPI              1                              # 0x209100c8, U1
+CFG-MSGOUT-NMEA_ID_GSV_I2C              1                              # 0x209100c4, U1
+CFG-MSGOUT-NMEA_ID_GSV_USB              1                              # 0x209100c7, U1
+CFG-MSGOUT-NMEA_ID_RLM_UART1            0                              # 0x20910401, U1
+CFG-MSGOUT-NMEA_ID_RLM_UART2            0                              # 0x20910402, U1
+CFG-MSGOUT-NMEA_ID_RLM_SPI              0                              # 0x20910404, U1
+CFG-MSGOUT-NMEA_ID_RLM_I2C              0                              # 0x20910400, U1
+CFG-MSGOUT-NMEA_ID_RLM_USB              0                              # 0x20910403, U1
+CFG-MSGOUT-NMEA_ID_RMC_UART1            1                              # 0x209100ac, U1
+CFG-MSGOUT-NMEA_ID_RMC_UART2            1                              # 0x209100ad, U1
+CFG-MSGOUT-NMEA_ID_RMC_SPI              1                              # 0x209100af, U1
+CFG-MSGOUT-NMEA_ID_RMC_I2C              1                              # 0x209100ab, U1
+CFG-MSGOUT-NMEA_ID_RMC_USB              1                              # 0x209100ae, U1
+CFG-MSGOUT-NMEA_ID_VLW_UART1            0                              # 0x209100e8, U1
+CFG-MSGOUT-NMEA_ID_VLW_UART2            0                              # 0x209100e9, U1
+CFG-MSGOUT-NMEA_ID_VLW_SPI              0                              # 0x209100eb, U1
+CFG-MSGOUT-NMEA_ID_VLW_I2C              0                              # 0x209100e7, U1
+CFG-MSGOUT-NMEA_ID_VLW_USB              0                              # 0x209100ea, U1
+CFG-MSGOUT-NMEA_ID_VTG_UART1            1                              # 0x209100b1, U1
+CFG-MSGOUT-NMEA_ID_VTG_UART2            1                              # 0x209100b2, U1
+CFG-MSGOUT-NMEA_ID_VTG_SPI              1                              # 0x209100b4, U1
+CFG-MSGOUT-NMEA_ID_VTG_I2C              1                              # 0x209100b0, U1
+CFG-MSGOUT-NMEA_ID_VTG_USB              1                              # 0x209100b3, U1
+CFG-MSGOUT-NMEA_ID_ZDA_UART1            0                              # 0x209100d9, U1
+CFG-MSGOUT-NMEA_ID_ZDA_UART2            0                              # 0x209100da, U1
+CFG-MSGOUT-NMEA_ID_ZDA_SPI              0                              # 0x209100dc, U1
+CFG-MSGOUT-NMEA_ID_ZDA_I2C              0                              # 0x209100d8, U1
+CFG-MSGOUT-NMEA_ID_ZDA_USB              0                              # 0x209100db, U1
+CFG-MSGOUT-PUBX_ID_POLYP_UART1          0                              # 0x209100ed, U1
+CFG-MSGOUT-PUBX_ID_POLYP_UART2          0                              # 0x209100ee, U1
+CFG-MSGOUT-PUBX_ID_POLYP_SPI            0                              # 0x209100f0, U1
+CFG-MSGOUT-PUBX_ID_POLYP_I2C            0                              # 0x209100ec, U1
+CFG-MSGOUT-PUBX_ID_POLYP_USB            0                              # 0x209100ef, U1
+CFG-MSGOUT-PUBX_ID_POLYS_UART1          0                              # 0x209100f2, U1
+CFG-MSGOUT-PUBX_ID_POLYS_UART2          0                              # 0x209100f3, U1
+CFG-MSGOUT-PUBX_ID_POLYS_SPI            0                              # 0x209100f5, U1
+CFG-MSGOUT-PUBX_ID_POLYS_I2C            0                              # 0x209100f1, U1
+CFG-MSGOUT-PUBX_ID_POLYS_USB            0                              # 0x209100f4, U1
+CFG-MSGOUT-PUBX_ID_POLYT_UART1          0                              # 0x209100f7, U1
+CFG-MSGOUT-PUBX_ID_POLYT_UART2          0                              # 0x209100f8, U1
+CFG-MSGOUT-PUBX_ID_POLYT_SPI            0                              # 0x209100fa, U1
+CFG-MSGOUT-PUBX_ID_POLYT_I2C            0                              # 0x209100f6, U1
+CFG-MSGOUT-PUBX_ID_POLYT_USB            0                              # 0x209100f9, U1
+CFG-MSGOUT-RTCM_3X_TYPE1005_UART1       0                              # 0x209102be, U1
+CFG-MSGOUT-RTCM_3X_TYPE1005_UART2       0                              # 0x209102bf, U1
+CFG-MSGOUT-RTCM_3X_TYPE1005_SPI         0                              # 0x209102c1, U1
+CFG-MSGOUT-RTCM_3X_TYPE1005_I2C         0                              # 0x209102bd, U1
+CFG-MSGOUT-RTCM_3X_TYPE1005_USB         0                              # 0x209102c0, U1
+CFG-MSGOUT-RTCM_3X_TYPE1074_UART1       0                              # 0x2091035f, U1
+CFG-MSGOUT-RTCM_3X_TYPE1074_UART2       0                              # 0x20910360, U1
+CFG-MSGOUT-RTCM_3X_TYPE1074_SPI         0                              # 0x20910362, U1
+CFG-MSGOUT-RTCM_3X_TYPE1074_I2C         0                              # 0x2091035e, U1
+CFG-MSGOUT-RTCM_3X_TYPE1074_USB         0                              # 0x20910361, U1
+CFG-MSGOUT-RTCM_3X_TYPE1077_UART1       0                              # 0x209102cd, U1
+CFG-MSGOUT-RTCM_3X_TYPE1077_UART2       1                              # 0x209102ce, U1
+CFG-MSGOUT-RTCM_3X_TYPE1077_SPI         0                              # 0x209102d0, U1
+CFG-MSGOUT-RTCM_3X_TYPE1077_I2C         0                              # 0x209102cc, U1
+CFG-MSGOUT-RTCM_3X_TYPE1077_USB         1                              # 0x209102cf, U1
+CFG-MSGOUT-RTCM_3X_TYPE1084_UART1       0                              # 0x20910364, U1
+CFG-MSGOUT-RTCM_3X_TYPE1084_UART2       0                              # 0x20910365, U1
+CFG-MSGOUT-RTCM_3X_TYPE1084_SPI         0                              # 0x20910367, U1
+CFG-MSGOUT-RTCM_3X_TYPE1084_I2C         0                              # 0x20910363, U1
+CFG-MSGOUT-RTCM_3X_TYPE1084_USB         0                              # 0x20910366, U1
+CFG-MSGOUT-RTCM_3X_TYPE1087_UART1       0                              # 0x209102d2, U1
+CFG-MSGOUT-RTCM_3X_TYPE1087_UART2       1                              # 0x209102d3, U1
+CFG-MSGOUT-RTCM_3X_TYPE1087_SPI         0                              # 0x209102d5, U1
+CFG-MSGOUT-RTCM_3X_TYPE1087_I2C         0                              # 0x209102d1, U1
+CFG-MSGOUT-RTCM_3X_TYPE1087_USB         1                              # 0x209102d4, U1
+CFG-MSGOUT-RTCM_3X_TYPE1094_UART1       0                              # 0x20910369, U1
+CFG-MSGOUT-RTCM_3X_TYPE1094_UART2       0                              # 0x2091036a, U1
+CFG-MSGOUT-RTCM_3X_TYPE1094_SPI         0                              # 0x2091036c, U1
+CFG-MSGOUT-RTCM_3X_TYPE1094_I2C         0                              # 0x20910368, U1
+CFG-MSGOUT-RTCM_3X_TYPE1094_USB         0                              # 0x2091036b, U1
+CFG-MSGOUT-RTCM_3X_TYPE1097_UART1       0                              # 0x20910319, U1
+CFG-MSGOUT-RTCM_3X_TYPE1097_UART2       0                              # 0x2091031a, U1
+CFG-MSGOUT-RTCM_3X_TYPE1097_SPI         0                              # 0x2091031c, U1
+CFG-MSGOUT-RTCM_3X_TYPE1097_I2C         0                              # 0x20910318, U1
+CFG-MSGOUT-RTCM_3X_TYPE1097_USB         0                              # 0x2091031b, U1
+CFG-MSGOUT-RTCM_3X_TYPE1124_UART1       0                              # 0x2091036e, U1
+CFG-MSGOUT-RTCM_3X_TYPE1124_UART2       0                              # 0x2091036f, U1
+CFG-MSGOUT-RTCM_3X_TYPE1124_SPI         0                              # 0x20910371, U1
+CFG-MSGOUT-RTCM_3X_TYPE1124_I2C         0                              # 0x2091036d, U1
+CFG-MSGOUT-RTCM_3X_TYPE1124_USB         0                              # 0x20910370, U1
+CFG-MSGOUT-RTCM_3X_TYPE1127_UART1       0                              # 0x209102d7, U1
+CFG-MSGOUT-RTCM_3X_TYPE1127_UART2       0                              # 0x209102d8, U1
+CFG-MSGOUT-RTCM_3X_TYPE1127_SPI         0                              # 0x209102da, U1
+CFG-MSGOUT-RTCM_3X_TYPE1127_I2C         0                              # 0x209102d6, U1
+CFG-MSGOUT-RTCM_3X_TYPE1127_USB         0                              # 0x209102d9, U1
+CFG-MSGOUT-RTCM_3X_TYPE1230_UART1       0                              # 0x20910304, U1
+CFG-MSGOUT-RTCM_3X_TYPE1230_UART2       1                              # 0x20910305, U1
+CFG-MSGOUT-RTCM_3X_TYPE1230_SPI         0                              # 0x20910307, U1
+CFG-MSGOUT-RTCM_3X_TYPE1230_I2C         0                              # 0x20910303, U1
+CFG-MSGOUT-RTCM_3X_TYPE1230_USB         1                              # 0x20910306, U1
+CFG-MSGOUT-RTCM_3X_TYPE4072_0_UART1     0                              # 0x209102ff, U1
+CFG-MSGOUT-RTCM_3X_TYPE4072_0_UART2     1                              # 0x20910300, U1
+CFG-MSGOUT-RTCM_3X_TYPE4072_0_SPI       0                              # 0x20910302, U1
+CFG-MSGOUT-RTCM_3X_TYPE4072_0_I2C       0                              # 0x209102fe, U1
+CFG-MSGOUT-RTCM_3X_TYPE4072_0_USB       1                              # 0x20910301, U1
+CFG-MSGOUT-RTCM_3X_TYPE4072_1_UART1     0                              # 0x20910382, U1
+CFG-MSGOUT-RTCM_3X_TYPE4072_1_UART2     0                              # 0x20910383, U1
+CFG-MSGOUT-RTCM_3X_TYPE4072_1_SPI       0                              # 0x20910385, U1
+CFG-MSGOUT-RTCM_3X_TYPE4072_1_I2C       0                              # 0x20910381, U1
+CFG-MSGOUT-RTCM_3X_TYPE4072_1_USB       0                              # 0x20910384, U1
+CFG-MSGOUT-UBX_LOG_INFO_UART1           0                              # 0x2091025a, U1
+CFG-MSGOUT-UBX_LOG_INFO_UART2           0                              # 0x2091025b, U1
+CFG-MSGOUT-UBX_LOG_INFO_SPI             0                              # 0x2091025d, U1
+CFG-MSGOUT-UBX_LOG_INFO_I2C             0                              # 0x20910259, U1
+CFG-MSGOUT-UBX_LOG_INFO_USB             0                              # 0x2091025c, U1
+CFG-MSGOUT-UBX_MON_COMMS_UART1          0                              # 0x20910350, U1
+CFG-MSGOUT-UBX_MON_COMMS_UART2          0                              # 0x20910351, U1
+CFG-MSGOUT-UBX_MON_COMMS_SPI            0                              # 0x20910353, U1
+CFG-MSGOUT-UBX_MON_COMMS_I2C            0                              # 0x2091034f, U1
+CFG-MSGOUT-UBX_MON_COMMS_USB            0                              # 0x20910352, U1
+CFG-MSGOUT-UBX_MON_HW2_UART1            0                              # 0x209101ba, U1
+CFG-MSGOUT-UBX_MON_HW2_UART2            0                              # 0x209101bb, U1
+CFG-MSGOUT-UBX_MON_HW2_SPI              0                              # 0x209101bd, U1
+CFG-MSGOUT-UBX_MON_HW2_I2C              0                              # 0x209101b9, U1
+CFG-MSGOUT-UBX_MON_HW2_USB              0                              # 0x209101bc, U1
+CFG-MSGOUT-UBX_MON_HW3_UART1            0                              # 0x20910355, U1
+CFG-MSGOUT-UBX_MON_HW3_UART2            0                              # 0x20910356, U1
+CFG-MSGOUT-UBX_MON_HW3_SPI              0                              # 0x20910358, U1
+CFG-MSGOUT-UBX_MON_HW3_I2C              0                              # 0x20910354, U1
+CFG-MSGOUT-UBX_MON_HW3_USB              0                              # 0x20910357, U1
+CFG-MSGOUT-UBX_MON_HW_UART1             1                              # 0x209101b5, U1
+CFG-MSGOUT-UBX_MON_HW_UART2             0                              # 0x209101b6, U1
+CFG-MSGOUT-UBX_MON_HW_SPI               0                              # 0x209101b8, U1
+CFG-MSGOUT-UBX_MON_HW_I2C               0                              # 0x209101b4, U1
+CFG-MSGOUT-UBX_MON_HW_USB               1                              # 0x209101b7, U1
+CFG-MSGOUT-UBX_MON_IO_UART1             0                              # 0x209101a6, U1
+CFG-MSGOUT-UBX_MON_IO_UART2             0                              # 0x209101a7, U1
+CFG-MSGOUT-UBX_MON_IO_SPI               0                              # 0x209101a9, U1
+CFG-MSGOUT-UBX_MON_IO_I2C               0                              # 0x209101a5, U1
+CFG-MSGOUT-UBX_MON_IO_USB               0                              # 0x209101a8, U1
+CFG-MSGOUT-UBX_MON_MSGPP_UART1          1                              # 0x20910197, U1
+CFG-MSGOUT-UBX_MON_MSGPP_UART2          0                              # 0x20910198, U1
+CFG-MSGOUT-UBX_MON_MSGPP_SPI            0                              # 0x2091019a, U1
+CFG-MSGOUT-UBX_MON_MSGPP_I2C            0                              # 0x20910196, U1
+CFG-MSGOUT-UBX_MON_MSGPP_USB            1                              # 0x20910199, U1
+CFG-MSGOUT-UBX_MON_RF_UART1             0                              # 0x2091035a, U1
+CFG-MSGOUT-UBX_MON_RF_UART2             0                              # 0x2091035b, U1
+CFG-MSGOUT-UBX_MON_RF_SPI               0                              # 0x2091035d, U1
+CFG-MSGOUT-UBX_MON_RF_I2C               0                              # 0x20910359, U1
+CFG-MSGOUT-UBX_MON_RF_USB               0                              # 0x2091035c, U1
+CFG-MSGOUT-UBX_MON_RXBUF_UART1          0                              # 0x209101a1, U1
+CFG-MSGOUT-UBX_MON_RXBUF_UART2          0                              # 0x209101a2, U1
+CFG-MSGOUT-UBX_MON_RXBUF_SPI            0                              # 0x209101a4, U1
+CFG-MSGOUT-UBX_MON_RXBUF_I2C            0                              # 0x209101a0, U1
+CFG-MSGOUT-UBX_MON_RXBUF_USB            0                              # 0x209101a3, U1
+CFG-MSGOUT-UBX_MON_RXR_UART1            0                              # 0x20910188, U1
+CFG-MSGOUT-UBX_MON_RXR_UART2            0                              # 0x20910189, U1
+CFG-MSGOUT-UBX_MON_RXR_SPI              0                              # 0x2091018b, U1
+CFG-MSGOUT-UBX_MON_RXR_I2C              0                              # 0x20910187, U1
+CFG-MSGOUT-UBX_MON_RXR_USB              0                              # 0x2091018a, U1
+CFG-MSGOUT-UBX_MON_SPAN_UART1           0                              # 0x2091038c, U1
+CFG-MSGOUT-UBX_MON_SPAN_UART2           0                              # 0x2091038d, U1
+CFG-MSGOUT-UBX_MON_SPAN_SPI             0                              # 0x2091038f, U1
+CFG-MSGOUT-UBX_MON_SPAN_I2C             0                              # 0x2091038b, U1
+CFG-MSGOUT-UBX_MON_SPAN_USB             0                              # 0x2091038e, U1
+CFG-MSGOUT-UBX_MON_TXBUF_UART1          0                              # 0x2091019c, U1
+CFG-MSGOUT-UBX_MON_TXBUF_UART2          0                              # 0x2091019d, U1
+CFG-MSGOUT-UBX_MON_TXBUF_SPI            0                              # 0x2091019f, U1
+CFG-MSGOUT-UBX_MON_TXBUF_I2C            0                              # 0x2091019b, U1
+CFG-MSGOUT-UBX_MON_TXBUF_USB            0                              # 0x2091019e, U1
+CFG-MSGOUT-UBX_NAV_CLOCK_UART1          1                              # 0x20910066, U1
+CFG-MSGOUT-UBX_NAV_CLOCK_UART2          0                              # 0x20910067, U1
+CFG-MSGOUT-UBX_NAV_CLOCK_SPI            0                              # 0x20910069, U1
+CFG-MSGOUT-UBX_NAV_CLOCK_I2C            0                              # 0x20910065, U1
+CFG-MSGOUT-UBX_NAV_CLOCK_USB            1                              # 0x20910068, U1
+CFG-MSGOUT-UBX_NAV_COV_UART1            0                              # 0x20910084, U1
+CFG-MSGOUT-UBX_NAV_COV_UART2            0                              # 0x20910085, U1
+CFG-MSGOUT-UBX_NAV_COV_SPI              0                              # 0x20910087, U1
+CFG-MSGOUT-UBX_NAV_COV_I2C              0                              # 0x20910083, U1
+CFG-MSGOUT-UBX_NAV_COV_USB              0                              # 0x20910086, U1
+CFG-MSGOUT-UBX_NAV_DOP_UART1            0                              # 0x20910039, U1
+CFG-MSGOUT-UBX_NAV_DOP_UART2            0                              # 0x2091003a, U1
+CFG-MSGOUT-UBX_NAV_DOP_SPI              0                              # 0x2091003c, U1
+CFG-MSGOUT-UBX_NAV_DOP_I2C              0                              # 0x20910038, U1
+CFG-MSGOUT-UBX_NAV_DOP_USB              0                              # 0x2091003b, U1
+CFG-MSGOUT-UBX_NAV_EELL_UART1           0                              # 0x20910314, U1
+CFG-MSGOUT-UBX_NAV_EELL_UART2           0                              # 0x20910315, U1
+CFG-MSGOUT-UBX_NAV_EELL_SPI             0                              # 0x20910317, U1
+CFG-MSGOUT-UBX_NAV_EELL_USB             0                              # 0x20910316, U1
+CFG-MSGOUT-UBX_NAV_EELL_I2C             0                              # 0x20910313, U1
+CFG-MSGOUT-UBX_NAV_EOE_UART1            0                              # 0x20910160, U1
+CFG-MSGOUT-UBX_NAV_EOE_UART2            0                              # 0x20910161, U1
+CFG-MSGOUT-UBX_NAV_EOE_SPI              0                              # 0x20910163, U1
+CFG-MSGOUT-UBX_NAV_EOE_I2C              0                              # 0x2091015f, U1
+CFG-MSGOUT-UBX_NAV_EOE_USB              0                              # 0x20910162, U1
+CFG-MSGOUT-UBX_NAV_GEOFENCE_UART1       0                              # 0x209100a2, U1
+CFG-MSGOUT-UBX_NAV_GEOFENCE_UART2       0                              # 0x209100a3, U1
+CFG-MSGOUT-UBX_NAV_GEOFENCE_SPI         0                              # 0x209100a5, U1
+CFG-MSGOUT-UBX_NAV_GEOFENCE_I2C         0                              # 0x209100a1, U1
+CFG-MSGOUT-UBX_NAV_GEOFENCE_USB         0                              # 0x209100a4, U1
+CFG-MSGOUT-UBX_NAV_HPPOSECEF_UART1      0                              # 0x2091002f, U1
+CFG-MSGOUT-UBX_NAV_HPPOSECEF_UART2      0                              # 0x20910030, U1
+CFG-MSGOUT-UBX_NAV_HPPOSECEF_SPI        0                              # 0x20910032, U1
+CFG-MSGOUT-UBX_NAV_HPPOSECEF_I2C        0                              # 0x2091002e, U1
+CFG-MSGOUT-UBX_NAV_HPPOSECEF_USB        0                              # 0x20910031, U1
+CFG-MSGOUT-UBX_NAV_HPPOSLLH_UART1       0                              # 0x20910034, U1
+CFG-MSGOUT-UBX_NAV_HPPOSLLH_UART2       0                              # 0x20910035, U1
+CFG-MSGOUT-UBX_NAV_HPPOSLLH_SPI         0                              # 0x20910037, U1
+CFG-MSGOUT-UBX_NAV_HPPOSLLH_I2C         0                              # 0x20910033, U1
+CFG-MSGOUT-UBX_NAV_HPPOSLLH_USB         0                              # 0x20910036, U1
+CFG-MSGOUT-UBX_NAV_ODO_UART1            0                              # 0x2091007f, U1
+CFG-MSGOUT-UBX_NAV_ODO_UART2            0                              # 0x20910080, U1
+CFG-MSGOUT-UBX_NAV_ODO_SPI              0                              # 0x20910082, U1
+CFG-MSGOUT-UBX_NAV_ODO_I2C              0                              # 0x2091007e, U1
+CFG-MSGOUT-UBX_NAV_ODO_USB              0                              # 0x20910081, U1
+CFG-MSGOUT-UBX_NAV_ORB_UART1            0                              # 0x20910011, U1
+CFG-MSGOUT-UBX_NAV_ORB_UART2            0                              # 0x20910012, U1
+CFG-MSGOUT-UBX_NAV_ORB_SPI              0                              # 0x20910014, U1
+CFG-MSGOUT-UBX_NAV_ORB_I2C              0                              # 0x20910010, U1
+CFG-MSGOUT-UBX_NAV_ORB_USB              0                              # 0x20910013, U1
+CFG-MSGOUT-UBX_NAV_POSECEF_UART1        0                              # 0x20910025, U1
+CFG-MSGOUT-UBX_NAV_POSECEF_UART2        0                              # 0x20910026, U1
+CFG-MSGOUT-UBX_NAV_POSECEF_SPI          0                              # 0x20910028, U1
+CFG-MSGOUT-UBX_NAV_POSECEF_I2C          0                              # 0x20910024, U1
+CFG-MSGOUT-UBX_NAV_POSECEF_USB          0                              # 0x20910027, U1
+CFG-MSGOUT-UBX_NAV_POSLLH_UART1         0                              # 0x2091002a, U1
+CFG-MSGOUT-UBX_NAV_POSLLH_UART2         0                              # 0x2091002b, U1
+CFG-MSGOUT-UBX_NAV_POSLLH_SPI           0                              # 0x2091002d, U1
+CFG-MSGOUT-UBX_NAV_POSLLH_I2C           0                              # 0x20910029, U1
+CFG-MSGOUT-UBX_NAV_POSLLH_USB           0                              # 0x2091002c, U1
+CFG-MSGOUT-UBX_NAV_PVT_UART1            1                              # 0x20910007, U1
+CFG-MSGOUT-UBX_NAV_PVT_UART2            0                              # 0x20910008, U1
+CFG-MSGOUT-UBX_NAV_PVT_SPI              0                              # 0x2091000a, U1
+CFG-MSGOUT-UBX_NAV_PVT_I2C              0                              # 0x20910006, U1
+CFG-MSGOUT-UBX_NAV_PVT_USB              1                              # 0x20910009, U1
+CFG-MSGOUT-UBX_NAV_RELPOSNED_UART1      1                              # 0x2091008e, U1
+CFG-MSGOUT-UBX_NAV_RELPOSNED_UART2      0                              # 0x2091008f, U1
+CFG-MSGOUT-UBX_NAV_RELPOSNED_SPI        0                              # 0x20910091, U1
+CFG-MSGOUT-UBX_NAV_RELPOSNED_I2C        0                              # 0x2091008d, U1
+CFG-MSGOUT-UBX_NAV_RELPOSNED_USB        1                              # 0x20910090, U1
+CFG-MSGOUT-UBX_NAV_SAT_UART1            1                              # 0x20910016, U1
+CFG-MSGOUT-UBX_NAV_SAT_UART2            0                              # 0x20910017, U1
+CFG-MSGOUT-UBX_NAV_SAT_SPI              0                              # 0x20910019, U1
+CFG-MSGOUT-UBX_NAV_SAT_I2C              0                              # 0x20910015, U1
+CFG-MSGOUT-UBX_NAV_SAT_USB              1                              # 0x20910018, U1
+CFG-MSGOUT-UBX_NAV_SBAS_UART1           0                              # 0x2091006b, U1
+CFG-MSGOUT-UBX_NAV_SBAS_UART2           0                              # 0x2091006c, U1
+CFG-MSGOUT-UBX_NAV_SBAS_SPI             0                              # 0x2091006e, U1
+CFG-MSGOUT-UBX_NAV_SBAS_I2C             0                              # 0x2091006a, U1
+CFG-MSGOUT-UBX_NAV_SBAS_USB             0                              # 0x2091006d, U1
+CFG-MSGOUT-UBX_NAV_SIG_UART1            0                              # 0x20910346, U1
+CFG-MSGOUT-UBX_NAV_SIG_UART2            0                              # 0x20910347, U1
+CFG-MSGOUT-UBX_NAV_SIG_SPI              0                              # 0x20910349, U1
+CFG-MSGOUT-UBX_NAV_SIG_I2C              0                              # 0x20910345, U1
+CFG-MSGOUT-UBX_NAV_SIG_USB              0                              # 0x20910348, U1
+CFG-MSGOUT-UBX_NAV_SLAS_UART1           0                              # 0x20910337, U1
+CFG-MSGOUT-UBX_NAV_SLAS_UART2           0                              # 0x20910338, U1
+CFG-MSGOUT-UBX_NAV_SLAS_SPI             0                              # 0x2091033a, U1
+CFG-MSGOUT-UBX_NAV_SLAS_I2C             0                              # 0x20910336, U1
+CFG-MSGOUT-UBX_NAV_SLAS_USB             0                              # 0x20910339, U1
+CFG-MSGOUT-UBX_NAV_STATUS_UART1         1                              # 0x2091001b, U1
+CFG-MSGOUT-UBX_NAV_STATUS_UART2         0                              # 0x2091001c, U1
+CFG-MSGOUT-UBX_NAV_STATUS_SPI           0                              # 0x2091001e, U1
+CFG-MSGOUT-UBX_NAV_STATUS_I2C           0                              # 0x2091001a, U1
+CFG-MSGOUT-UBX_NAV_STATUS_USB           1                              # 0x2091001d, U1
+CFG-MSGOUT-UBX_NAV_SVIN_UART1           0                              # 0x20910089, U1
+CFG-MSGOUT-UBX_NAV_SVIN_UART2           0                              # 0x2091008a, U1
+CFG-MSGOUT-UBX_NAV_SVIN_SPI             0                              # 0x2091008c, U1
+CFG-MSGOUT-UBX_NAV_SVIN_I2C             0                              # 0x20910088, U1
+CFG-MSGOUT-UBX_NAV_SVIN_USB             0                              # 0x2091008b, U1
+CFG-MSGOUT-UBX_NAV_TIMEBDS_UART1        0                              # 0x20910052, U1
+CFG-MSGOUT-UBX_NAV_TIMEBDS_UART2        0                              # 0x20910053, U1
+CFG-MSGOUT-UBX_NAV_TIMEBDS_SPI          0                              # 0x20910055, U1
+CFG-MSGOUT-UBX_NAV_TIMEBDS_I2C          0                              # 0x20910051, U1
+CFG-MSGOUT-UBX_NAV_TIMEBDS_USB          0                              # 0x20910054, U1
+CFG-MSGOUT-UBX_NAV_TIMEGAL_UART1        0                              # 0x20910057, U1
+CFG-MSGOUT-UBX_NAV_TIMEGAL_UART2        0                              # 0x20910058, U1
+CFG-MSGOUT-UBX_NAV_TIMEGAL_SPI          0                              # 0x2091005a, U1
+CFG-MSGOUT-UBX_NAV_TIMEGAL_I2C          0                              # 0x20910056, U1
+CFG-MSGOUT-UBX_NAV_TIMEGAL_USB          0                              # 0x20910059, U1
+CFG-MSGOUT-UBX_NAV_TIMEGLO_UART1        0                              # 0x2091004d, U1
+CFG-MSGOUT-UBX_NAV_TIMEGLO_UART2        0                              # 0x2091004e, U1
+CFG-MSGOUT-UBX_NAV_TIMEGLO_SPI          0                              # 0x20910050, U1
+CFG-MSGOUT-UBX_NAV_TIMEGLO_I2C          0                              # 0x2091004c, U1
+CFG-MSGOUT-UBX_NAV_TIMEGLO_USB          0                              # 0x2091004f, U1
+CFG-MSGOUT-UBX_NAV_TIMEGPS_UART1        0                              # 0x20910048, U1
+CFG-MSGOUT-UBX_NAV_TIMEGPS_UART2        0                              # 0x20910049, U1
+CFG-MSGOUT-UBX_NAV_TIMEGPS_SPI          0                              # 0x2091004b, U1
+CFG-MSGOUT-UBX_NAV_TIMEGPS_I2C          0                              # 0x20910047, U1
+CFG-MSGOUT-UBX_NAV_TIMEGPS_USB          0                              # 0x2091004a, U1
+CFG-MSGOUT-UBX_NAV_TIMELS_UART1         0                              # 0x20910061, U1
+CFG-MSGOUT-UBX_NAV_TIMELS_UART2         0                              # 0x20910062, U1
+CFG-MSGOUT-UBX_NAV_TIMELS_SPI           0                              # 0x20910064, U1
+CFG-MSGOUT-UBX_NAV_TIMELS_I2C           0                              # 0x20910060, U1
+CFG-MSGOUT-UBX_NAV_TIMELS_USB           0                              # 0x20910063, U1
+CFG-MSGOUT-UBX_NAV_TIMEQZSS_UART1       0                              # 0x20910387, U1
+CFG-MSGOUT-UBX_NAV_TIMEQZSS_UART2       0                              # 0x20910388, U1
+CFG-MSGOUT-UBX_NAV_TIMEQZSS_SPI         0                              # 0x2091038a, U1
+CFG-MSGOUT-UBX_NAV_TIMEQZSS_I2C         0                              # 0x20910386, U1
+CFG-MSGOUT-UBX_NAV_TIMEQZSS_USB         0                              # 0x20910389, U1
+CFG-MSGOUT-UBX_NAV_TIMEUTC_UART1        0                              # 0x2091005c, U1
+CFG-MSGOUT-UBX_NAV_TIMEUTC_UART2        0                              # 0x2091005d, U1
+CFG-MSGOUT-UBX_NAV_TIMEUTC_SPI          0                              # 0x2091005f, U1
+CFG-MSGOUT-UBX_NAV_TIMEUTC_I2C          0                              # 0x2091005b, U1
+CFG-MSGOUT-UBX_NAV_TIMEUTC_USB          0                              # 0x2091005e, U1
+CFG-MSGOUT-UBX_NAV_VELECEF_UART1        0                              # 0x2091003e, U1
+CFG-MSGOUT-UBX_NAV_VELECEF_UART2        0                              # 0x2091003f, U1
+CFG-MSGOUT-UBX_NAV_VELECEF_SPI          0                              # 0x20910041, U1
+CFG-MSGOUT-UBX_NAV_VELECEF_I2C          0                              # 0x2091003d, U1
+CFG-MSGOUT-UBX_NAV_VELECEF_USB          0                              # 0x20910040, U1
+CFG-MSGOUT-UBX_NAV_VELNED_UART1         0                              # 0x20910043, U1
+CFG-MSGOUT-UBX_NAV_VELNED_UART2         0                              # 0x20910044, U1
+CFG-MSGOUT-UBX_NAV_VELNED_SPI           0                              # 0x20910046, U1
+CFG-MSGOUT-UBX_NAV_VELNED_I2C           0                              # 0x20910042, U1
+CFG-MSGOUT-UBX_NAV_VELNED_USB           0                              # 0x20910045, U1
+CFG-MSGOUT-UBX_RXM_MEASX_UART1          0                              # 0x20910205, U1
+CFG-MSGOUT-UBX_RXM_MEASX_UART2          0                              # 0x20910206, U1
+CFG-MSGOUT-UBX_RXM_MEASX_SPI            0                              # 0x20910208, U1
+CFG-MSGOUT-UBX_RXM_MEASX_I2C            0                              # 0x20910204, U1
+CFG-MSGOUT-UBX_RXM_MEASX_USB            0                              # 0x20910207, U1
+CFG-MSGOUT-UBX_RXM_RAWX_UART1           1                              # 0x209102a5, U1
+CFG-MSGOUT-UBX_RXM_RAWX_UART2           0                              # 0x209102a6, U1
+CFG-MSGOUT-UBX_RXM_RAWX_SPI             0                              # 0x209102a8, U1
+CFG-MSGOUT-UBX_RXM_RAWX_I2C             0                              # 0x209102a4, U1
+CFG-MSGOUT-UBX_RXM_RAWX_USB             1                              # 0x209102a7, U1
+CFG-MSGOUT-UBX_RXM_RLM_UART1            0                              # 0x2091025f, U1
+CFG-MSGOUT-UBX_RXM_RLM_UART2            0                              # 0x20910260, U1
+CFG-MSGOUT-UBX_RXM_RLM_SPI              0                              # 0x20910262, U1
+CFG-MSGOUT-UBX_RXM_RLM_I2C              0                              # 0x2091025e, U1
+CFG-MSGOUT-UBX_RXM_RLM_USB              0                              # 0x20910261, U1
+CFG-MSGOUT-UBX_RXM_RTCM_UART1           1                              # 0x20910269, U1
+CFG-MSGOUT-UBX_RXM_RTCM_UART2           0                              # 0x2091026a, U1
+CFG-MSGOUT-UBX_RXM_RTCM_SPI             0                              # 0x2091026c, U1
+CFG-MSGOUT-UBX_RXM_RTCM_I2C             0                              # 0x20910268, U1
+CFG-MSGOUT-UBX_RXM_RTCM_USB             1                              # 0x2091026b, U1
+CFG-MSGOUT-UBX_RXM_SFRBX_UART1          1                              # 0x20910232, U1
+CFG-MSGOUT-UBX_RXM_SFRBX_UART2          0                              # 0x20910233, U1
+CFG-MSGOUT-UBX_RXM_SFRBX_SPI            0                              # 0x20910235, U1
+CFG-MSGOUT-UBX_RXM_SFRBX_I2C            0                              # 0x20910231, U1
+CFG-MSGOUT-UBX_RXM_SFRBX_USB            1                              # 0x20910234, U1
+CFG-MSGOUT-UBX_TIM_TM2_UART1            0                              # 0x20910179, U1
+CFG-MSGOUT-UBX_TIM_TM2_UART2            0                              # 0x2091017a, U1
+CFG-MSGOUT-UBX_TIM_TM2_SPI              0                              # 0x2091017c, U1
+CFG-MSGOUT-UBX_TIM_TM2_I2C              0                              # 0x20910178, U1
+CFG-MSGOUT-UBX_TIM_TM2_USB              0                              # 0x2091017b, U1
+CFG-MSGOUT-UBX_TIM_TP_UART1             0                              # 0x2091017e, U1
+CFG-MSGOUT-UBX_TIM_TP_UART2             0                              # 0x2091017f, U1
+CFG-MSGOUT-UBX_TIM_TP_SPI               0                              # 0x20910181, U1
+CFG-MSGOUT-UBX_TIM_TP_I2C               0                              # 0x2091017d, U1
+CFG-MSGOUT-UBX_TIM_TP_USB               0                              # 0x20910180, U1
+CFG-MSGOUT-UBX_TIM_VRFY_UART1           0                              # 0x20910093, U1
+CFG-MSGOUT-UBX_TIM_VRFY_UART2           0                              # 0x20910094, U1
+CFG-MSGOUT-UBX_TIM_VRFY_SPI             0                              # 0x20910096, U1
+CFG-MSGOUT-UBX_TIM_VRFY_I2C             0                              # 0x20910092, U1
+CFG-MSGOUT-UBX_TIM_VRFY_USB             0                              # 0x20910095, U1
+CFG-NAVHPG-DGNSSMODE                    RTK_FIXED                      # = 3, 0x20140011, E1
+CFG-NAVSPG-FIXMODE                      AUTO                           # = 3, 0x20110011, E1
+CFG-NAVSPG-INIFIX3D                     false                          # = 0, 0x10110013, L
+CFG-NAVSPG-WKNROLLOVER                  2098                           # 0x30110017, U2
+CFG-NAVSPG-UTCSTANDARD                  AUTO                           # = 0, 0x2011001c, E1
+CFG-NAVSPG-DYNMODEL                     STAT                           # = 0, 0x20110021, E1
+CFG-NAVSPG-ACKAIDING                    false                          # = 0, 0x10110025, L
+CFG-NAVSPG-USE_USRDAT                   false                          # = 0, 0x10110061, L
+CFG-NAVSPG-USRDAT_MAJA                  6378137                        # 0x50110062, R8
+CFG-NAVSPG-USRDAT_FLAT                  298.25722356300002502393908798694610595703125 # 0x50110063, R8
+CFG-NAVSPG-USRDAT_DX                    0                              # 0x40110064, R4
+CFG-NAVSPG-USRDAT_DY                    0                              # 0x40110065, R4
+CFG-NAVSPG-USRDAT_DZ                    0                              # 0x40110066, R4
+CFG-NAVSPG-USRDAT_ROTX                  0                              # 0x40110067, R4
+CFG-NAVSPG-USRDAT_ROTY                  0                              # 0x40110068, R4
+CFG-NAVSPG-USRDAT_ROTZ                  0                              # 0x40110069, R4
+CFG-NAVSPG-USRDAT_SCALE                 0                              # 0x4011006a, R4
+CFG-NAVSPG-INFIL_MINSVS                 3                              # 0x201100a1, U1
+CFG-NAVSPG-INFIL_MAXSVS                 32                             # 0x201100a2, U1
+CFG-NAVSPG-INFIL_MINCNO                 6                              # 0x201100a3, U1
+CFG-NAVSPG-INFIL_MINELEV                10                             # 0x201100a4, I1
+CFG-NAVSPG-INFIL_NCNOTHRS               0                              # 0x201100aa, U1
+CFG-NAVSPG-INFIL_CNOTHRS                0                              # 0x201100ab, U1
+CFG-NAVSPG-OUTFIL_PDOP                  250                            # 0x301100b1, U2
+CFG-NAVSPG-OUTFIL_TDOP                  250                            # 0x301100b2, U2
+CFG-NAVSPG-OUTFIL_PACC                  100                            # 0x301100b3, U2
+CFG-NAVSPG-OUTFIL_TACC                  350                            # 0x301100b4, U2
+CFG-NAVSPG-OUTFIL_FACC                  150                            # 0x301100b5, U2
+CFG-NAVSPG-CONSTR_ALT                   0                              # 0x401100c1, I4
+CFG-NAVSPG-CONSTR_ALTVAR                10000                          # 0x401100c2, U4
+CFG-NAVSPG-CONSTR_DGNSSTO               60                             # 0x201100c4, U1
+CFG-NMEA-PROTVER                        V41                            # = 41, 0x20930001, E1
+CFG-NMEA-MAXSVS                         UNLIM                          # = 0, 0x20930002, E1
+CFG-NMEA-COMPAT                         false                          # = 0, 0x10930003, L
+CFG-NMEA-CONSIDER                       true                           # = 1, 0x10930004, L
+CFG-NMEA-LIMIT82                        false                          # = 0, 0x10930005, L
+CFG-NMEA-HIGHPREC                       false                          # = 0, 0x10930006, L
+CFG-NMEA-SVNUMBERING                    STRICT                         # = 0, 0x20930007, E1
+CFG-NMEA-FILT_GPS                       false                          # = 0, 0x10930011, L
+CFG-NMEA-FILT_SBAS                      false                          # = 0, 0x10930012, L
+CFG-NMEA-FILT_GAL                       false                          # = 0, 0x10930013, L
+CFG-NMEA-FILT_QZSS                      false                          # = 0, 0x10930015, L
+CFG-NMEA-FILT_GLO                       false                          # = 0, 0x10930016, L
+CFG-NMEA-FILT_BDS                       false                          # = 0, 0x10930017, L
+CFG-NMEA-OUT_INVFIX                     false                          # = 0, 0x10930021, L
+CFG-NMEA-OUT_MSKFIX                     false                          # = 0, 0x10930022, L
+CFG-NMEA-OUT_INVTIME                    false                          # = 0, 0x10930023, L
+CFG-NMEA-OUT_INVDATE                    false                          # = 0, 0x10930024, L
+CFG-NMEA-OUT_ONLYGPS                    false                          # = 0, 0x10930025, L
+CFG-NMEA-OUT_FROZENCOG                  false                          # = 0, 0x10930026, L
+CFG-NMEA-MAINTALKERID                   AUTO                           # = 0, 0x20930031, E1
+CFG-NMEA-GSVTALKERID                    GNSS                           # = 0, 0x20930032, E1
+CFG-NMEA-BDSTALKERID                    0                              # 0x30930033, U2
+CFG-ODO-USE_ODO                         false                          # = 0, 0x10220001, L
+CFG-ODO-USE_COG                         false                          # = 0, 0x10220002, L
+CFG-ODO-OUTLPVEL                        false                          # = 0, 0x10220003, L
+CFG-ODO-OUTLPCOG                        false                          # = 0, 0x10220004, L
+CFG-ODO-PROFILE                         RUN                            # = 0, 0x20220005, E1
+CFG-ODO-COGMAXSPEED                     10                             # 0x20220021, U1
+CFG-ODO-COGMAXPOSACC                    50                             # 0x20220022, U1
+CFG-ODO-VELLPGAIN                       153                            # 0x20220031, U1
+CFG-ODO-COGLPGAIN                       76                             # 0x20220032, U1
+CFG-QZSS-USE_SLAS_DGNSS                 true                           # = 1, 0x10370005, L
+CFG-QZSS-USE_SLAS_TESTMODE              false                          # = 0, 0x10370006, L
+CFG-QZSS-USE_SLAS_RAIM_UNCORR           false                          # = 0, 0x10370007, L
+CFG-RATE-MEAS                           100                            # 0x30210001, U2
+CFG-RATE-NAV                            2                              # 0x30210002, U2
+#CFG-RATE-TIMEREF                        GPS                            # = 1, 0x20210003, E1
+CFG-RATE-TIMEREF                        UTC                            # = 0, 0x20210003, E1
+CFG-RINV-DUMP                           false                          # = 0, 0x10c70001, L
+CFG-RINV-BINARY                         false                          # = 0, 0x10c70002, L
+CFG-RINV-DATA_SIZE                      22                             # 0x20c70003, U1
+CFG-RINV-CHUNK0                         0x203a656369746f4e             # = "Notice: ", 0x50c70004, X8
+CFG-RINV-CHUNK1                         0x2061746164206f6e             # = "no data ", 0x50c70005, X8
+CFG-RINV-CHUNK2                         0x0000216465766173             # = "saved!", 0x50c70006, X8
+CFG-RINV-CHUNK3                         0x0000000000000000             # 0x50c70007, X8
+CFG-RTCM-DF003_OUT                      10                             # 0x30090001, U2
+CFG-RTCM-DF003_IN                       0                              # 0x30090008, U2
+CFG-RTCM-DF003_IN_FILTER                DISABLED                       # = 0, 0x20090009, E1
+CFG-SBAS-USE_TESTMODE                   false                          # = 0, 0x10360002, L
+CFG-SBAS-USE_RANGING                    true                           # = 1, 0x10360003, L
+CFG-SBAS-USE_DIFFCORR                   true                           # = 1, 0x10360004, L
+CFG-SBAS-USE_INTEGRITY                  false                          # = 0, 0x10360005, L
+CFG-SBAS-PRNSCANMASK                    PRN123|PRN126|PRN127|PRN128|PRN129|PRN131|PRN133|PRN136|PRN137|PRN138 # = 0x0000000000072bc8, 0x50360006, X8
+CFG-SEC-CFG_LOCK                        false                          # = 0, 0x10f60009, L
+CFG-SEC-CFG_LOCK_UNLOCKGRP1             0                              # 0x30f6000a, U2
+CFG-SEC-CFG_LOCK_UNLOCKGRP2             0                              # 0x30f6000b, U2
+CFG-SIGNAL-GPS_ENA                      true                           # = 1, 0x1031001f, L
+CFG-SIGNAL-GPS_L1CA_ENA                 true                           # = 1, 0x10310001, L
+CFG-SIGNAL-GPS_L2C_ENA                  true                           # = 1, 0x10310003, L
+CFG-SIGNAL-SBAS_ENA                     true                           # = 1, 0x10310020, L
+CFG-SIGNAL-SBAS_L1CA_ENA                true                           # = 1, 0x10310005, L
+CFG-SIGNAL-GAL_ENA                      false                          # = 1, 0x10310021, L
+CFG-SIGNAL-GAL_E1_ENA                   false                          # = 1, 0x10310007, L
+CFG-SIGNAL-GAL_E5B_ENA                  false                          # = 1, 0x1031000a, L
+CFG-SIGNAL-BDS_ENA                      false                          # = 1, 0x10310022, L
+CFG-SIGNAL-BDS_B1_ENA                   false                          # = 1, 0x1031000d, L
+CFG-SIGNAL-BDS_B2_ENA                   false                          # = 1, 0x1031000e, L
+CFG-SIGNAL-QZSS_ENA                     false                          # = 1, 0x10310024, L
+CFG-SIGNAL-QZSS_L1CA_ENA                false                          # = 1, 0x10310012, L
+CFG-SIGNAL-QZSS_L1S_ENA                 false                          # = 0, 0x10310014, L
+CFG-SIGNAL-QZSS_L2C_ENA                 false                          # = 1, 0x10310015, L
+CFG-SIGNAL-GLO_ENA                      true                           # = 1, 0x10310025, L
+CFG-SIGNAL-GLO_L1_ENA                   true                           # = 1, 0x10310018, L
+CFG-SIGNAL-GLO_L2_ENA                   true                           # = 1, 0x1031001a, L
+CFG-SPI-MAXFF                           50                             # 0x20640001, U1
+CFG-SPI-CPOLARITY                       false                          # = 0, 0x10640002, L
+CFG-SPI-CPHASE                          false                          # = 0, 0x10640003, L
+CFG-SPI-EXTENDEDTIMEOUT                 false                          # = 0, 0x10640005, L
+CFG-SPI-ENABLED                         false                          # = 0, 0x10640006, L
+CFG-SPIINPROT-UBX                       true                           # = 1, 0x10790001, L
+CFG-SPIINPROT-NMEA                      true                           # = 1, 0x10790002, L
+CFG-SPIINPROT-RTCM3X                    true                           # = 1, 0x10790004, L
+CFG-SPIOUTPROT-UBX                      true                           # = 1, 0x107a0001, L
+CFG-SPIOUTPROT-NMEA                     true                           # = 1, 0x107a0002, L
+CFG-SPIOUTPROT-RTCM3X                   true                           # = 1, 0x107a0004, L
+CFG-TMODE-MODE                          DISABLED                       # = 0, 0x20030001, E1
+CFG-TMODE-POS_TYPE                      ECEF                           # = 0, 0x20030002, E1
+CFG-TMODE-ECEF_X                        0                              # 0x40030003, I4
+CFG-TMODE-ECEF_Y                        0                              # 0x40030004, I4
+CFG-TMODE-ECEF_Z                        0                              # 0x40030005, I4
+CFG-TMODE-ECEF_X_HP                     0                              # 0x20030006, I1
+CFG-TMODE-ECEF_Y_HP                     0                              # 0x20030007, I1
+CFG-TMODE-ECEF_Z_HP                     0                              # 0x20030008, I1
+CFG-TMODE-LAT                           0                              # 0x40030009, I4
+CFG-TMODE-LON                           0                              # 0x4003000a, I4
+CFG-TMODE-HEIGHT                        0                              # 0x4003000b, I4
+CFG-TMODE-LAT_HP                        0                              # 0x2003000c, I1
+CFG-TMODE-LON_HP                        0                              # 0x2003000d, I1
+CFG-TMODE-HEIGHT_HP                     0                              # 0x2003000e, I1
+CFG-TMODE-FIXED_POS_ACC                 0                              # 0x4003000f, U4
+CFG-TMODE-SVIN_MIN_DUR                  0                              # 0x40030010, U4
+CFG-TMODE-SVIN_ACC_LIMIT                0                              # 0x40030011, U4
+CFG-TP-PULSE_DEF                        PERIOD                         # = 0, 0x20050023, E1
+CFG-TP-PULSE_LENGTH_DEF                 LENGTH                         # = 1, 0x20050030, E1
+CFG-TP-ANT_CABLEDELAY                   50                             # 0x30050001, I2
+CFG-TP-PERIOD_TP1                       1000000                        # 0x40050002, U4
+CFG-TP-PERIOD_LOCK_TP1                  1000000                        # 0x40050003, U4
+CFG-TP-FREQ_TP1                         1                              # 0x40050024, U4
+CFG-TP-FREQ_LOCK_TP1                    1                              # 0x40050025, U4
+CFG-TP-LEN_TP1                          0                              # 0x40050004, U4
+CFG-TP-LEN_LOCK_TP1                     100000                         # 0x40050005, U4
+CFG-TP-DUTY_TP1                         0                              # 0x5005002a, R8
+CFG-TP-DUTY_LOCK_TP1                    10                             # 0x5005002b, R8
+CFG-TP-USER_DELAY_TP1                   0                              # 0x40050006, I4
+CFG-TP-TP1_ENA                          true                           # = 1, 0x10050007, L
+CFG-TP-SYNC_GNSS_TP1                    true                           # = 1, 0x10050008, L
+CFG-TP-USE_LOCKED_TP1                   true                           # = 1, 0x10050009, L
+CFG-TP-ALIGN_TO_TOW_TP1                 true                           # = 1, 0x1005000a, L
+CFG-TP-POL_TP1                          true                           # = 1, 0x1005000b, L
+CFG-TP-TIMEGRID_TP1                     UTC                            # = 0, 0x2005000c, E1
+CFG-TXREADY-ENABLED                     false                          # = 0, 0x10a20001, L
+CFG-TXREADY-POLARITY                    false                          # = 0, 0x10a20002, L
+CFG-TXREADY-PIN                         0                              # 0x20a20003, U1
+CFG-TXREADY-THRESHOLD                   0                              # 0x30a20004, U2
+CFG-TXREADY-INTERFACE                   I2C                            # = 0, 0x20a20005, E1
+CFG-UART1-BAUDRATE                      230400                         # 0x40520001, U4
+CFG-UART1-STOPBITS                      ONE                            # = 1, 0x20520002, E1
+CFG-UART1-DATABITS                      EIGHT                          # = 0, 0x20520003, E1
+CFG-UART1-PARITY                        NONE                           # = 0, 0x20520004, E1
+CFG-UART1-ENABLED                       true                           # = 1, 0x10520005, L
+CFG-UART1INPROT-UBX                     true                           # = 1, 0x10730001, L
+CFG-UART1INPROT-NMEA                    true                           # = 1, 0x10730002, L
+CFG-UART1INPROT-RTCM3X                  true                           # = 1, 0x10730004, L
+CFG-UART1OUTPROT-UBX                    true                           # = 1, 0x10740001, L
+CFG-UART1OUTPROT-NMEA                   true                           # = 1, 0x10740002, L
+CFG-UART1OUTPROT-RTCM3X                 true                           # = 1, 0x10740004, L
+CFG-UART2-BAUDRATE                      230400                         # 0x40530001, U4
+CFG-UART2-STOPBITS                      ONE                            # = 1, 0x20530002, E1
+CFG-UART2-DATABITS                      EIGHT                          # = 0, 0x20530003, E1
+CFG-UART2-PARITY                        NONE                           # = 0, 0x20530004, E1
+CFG-UART2-ENABLED                       true                           # = 1, 0x10530005, L
+CFG-UART2-REMAP                         false                          # = 0, 0x10530006, L
+CFG-UART2INPROT-UBX                     false                          # = 0, 0x10750001, L
+CFG-UART2INPROT-NMEA                    false                          # = 0, 0x10750002, L
+CFG-UART2INPROT-RTCM3X                  true                           # = 1, 0x10750004, L
+CFG-UART2OUTPROT-UBX                    false                          # = 0, 0x10760001, L
+CFG-UART2OUTPROT-NMEA                   false                          # = 0, 0x10760002, L
+CFG-UART2OUTPROT-RTCM3X                 true                           # = 1, 0x10760004, L
+CFG-USB-ENABLED                         true                           # = 1, 0x10650001, L
+CFG-USB-SELFPOW                         true                           # = 1, 0x10650002, L
+CFG-USB-VENDOR_ID                       5446                           # 0x3065000a, U2
+CFG-USB-PRODUCT_ID                      425                            # 0x3065000b, U2
+CFG-USB-POWER                           0                              # 0x3065000c, U2
+CFG-USB-VENDOR_STR0                     0x4120786f6c622d75             # = "u-blox A", 0x5065000d, X8
+CFG-USB-VENDOR_STR1                     0x2e777777202d2047             # = "G - www.", 0x5065000e, X8
+CFG-USB-VENDOR_STR2                     0x632e786f6c622d75             # = "u-blox.c", 0x5065000f, X8
+CFG-USB-VENDOR_STR3                     0x0000000000006d6f             # = "om", 0x50650010, X8
+CFG-USB-PRODUCT_STR0                    0x4720786f6c622d75             # = "u-blox G", 0x50650011, X8
+CFG-USB-PRODUCT_STR1                    0x656365722053534e             # = "NSS rece", 0x50650012, X8
+CFG-USB-PRODUCT_STR2                    0x0000000072657669             # = "iver", 0x50650013, X8
+CFG-USB-PRODUCT_STR3                    0x0000000000000000             # 0x50650014, X8
+CFG-USB-SERIAL_NO_STR0                  0x0000000000697270             # 0x50650015, X8
+CFG-USB-SERIAL_NO_STR1                  0x0000000000000000             # 0x50650016, X8
+CFG-USB-SERIAL_NO_STR2                  0x0000000000000000             # 0x50650017, X8
+CFG-USB-SERIAL_NO_STR3                  0x0000000000000000             # 0x50650018, X8
+CFG-USBINPROT-UBX                       true                           # = 1, 0x10770001, L
+CFG-USBINPROT-NMEA                      true                           # = 1, 0x10770002, L
+CFG-USBINPROT-RTCM3X                    true                           # = 1, 0x10770004, L
+CFG-USBOUTPROT-UBX                      true                           # = 1, 0x10780001, L
+CFG-USBOUTPROT-NMEA                     true                           # = 1, 0x10780002, L
+CFG-USBOUTPROT-RTCM3X                   true                           # = 1, 0x10780004, L
