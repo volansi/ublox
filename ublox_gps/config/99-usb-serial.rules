@@ -13,5 +13,6 @@ SUBSYSTEM=="tty", ATTRS{serial}=="mb", SYMLINK+="ttyACM_mb"
 SUBSYSTEM=="tty", ATTRS{serial}=="base", SYMLINK+="ttyACM_base"
 SUBSYSTEM=="tty", ATTRS{serial}=="FT1GU4Q9", SYMLINK+="ttyUSB_telem2"
 SUBSYSTEM=="tty", ATTRS{serial}=="A506P7IA", SYMLINK+="ttyUSB_gps_uart2"
-
+SUBSYSTEM=="tty", ATTRS{serial}=="A50285BI", SYMLINK+="ttyUSB_pri_uart2"
+#SUBSYSTEM=="tty", ATTRS{serial}=="A50285BI", SYMLINK+="ttyUSB_pri_uart2"
 
