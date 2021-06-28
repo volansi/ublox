@@ -7,7 +7,7 @@
 
   <arg name="node_name"           doc="name of this node"
                                   default="ublox_movingbase" />
-  <arg name="output"              default="screen" />
+  <arg name="output"              default="log" />
   <arg name="respawn"             default="true" />
   <arg name="respawn_delay"       default="1" />
   <arg name="clear_params"        default="true" />
@@ -20,4 +20,11 @@
     <rosparam command="load"
               file="$(arg param_file_dir)/$(arg param_file_name).yaml" />
   </node>
+
+  <node name="ublox_mb_monitor" pkg="ublox_gps" type="monitor_ublox.py" 
+                output="$(arg output)" respawn="$(arg respawn)">
+  	<param name="topic" type="str" value="/ublox_movingbase/fix"/>
+	<param name="nodename" type="str" value="ublox_movingbase"/>
+  </node>
+
 </launch>
