@@ -55,5 +55,5 @@ publish:
 # raw data
 raw_data: true
 raw_data_stream:
-  dir: /data/rover/
+  dir: /data/rover/current/
   publish: true

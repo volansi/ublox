@@ -80,5 +80,5 @@ publish:
     
 raw_data: true
 raw_data_stream:
-  dir: /data/movingbase/
+  dir: /data/movingbase/current/
   publish: true
