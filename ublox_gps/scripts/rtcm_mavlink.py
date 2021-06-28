@@ -71,7 +71,8 @@ def read_rtcm():
            len=length,
            data=bytes)
         connection.mav.send(rtcm_msg)
-        mav_msg_count += 1
+
+      mav_msg_count += 1
 
 if __name__ == '__main__':
     rospy.init_node('read_rtcm', anonymous=True)
