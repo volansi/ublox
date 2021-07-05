@@ -109,7 +109,7 @@ if __name__ == '__main__':
           status.D = D
           status.distance = math.sqrt(N*N+E*E)
           status.ping_ms = pingms
-          statusbeacon_ID = input_id
+          status.beacon_ID = input_id
           pub.publish(status)
           base_updated = False
      
