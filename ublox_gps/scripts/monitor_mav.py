@@ -7,10 +7,19 @@ from pymavlink import mavutil, mavparm
 from pymavlink.dialects.v20.common import MAVLink_global_position_int_message 
 import struct
 import subprocess
-from pymap3d import ned
+from pymap3d import geodetic2ned
 
+# monitor distance, ping time, and input ID of UAS
+# allows other nodes to send data based on this info
+# currently will exit on mavlink connection loss and rely on roslaunch respawn
+
+have_id=False
 input_id=0
 pingms=10000
+base_mode=0
+custom_mode=0
+system_status=0
+time_boot_ms=0
 
 def ping(addr):
    result = subprocess.run("ping -c 1 -w 1 " +addr,
@@ -37,7 +46,7 @@ if __name__ == '__main__':
     rospy.init_node('monitor_mav', anonymous=True)
 
     transport_protocol = rospy.get_param('~transport_protocol', 'tcp')
-    address = rospy.get_param('~address', '10.0.1.120')
+    address = rospy.get_param('~address', '127.0.0.1')
     port = rospy.get_param('~port', '5760')
     id = rospy.get_param('~id', 10)
     fix_topic = rospy.get_param('~fix_topic', '/ublox_movingbase/fix')
@@ -46,6 +55,7 @@ if __name__ == '__main__':
     pub = rospy.Publisher("/mav_status", MavStatus, queue_size=10)
     status=MavStatus()
     base_updated = False
+    start_time = rospy.get_rostime()
     
     connection_str = transport_protocol + ":" + address + ":" + port
     rospy.loginfo(f"Connecting to: {connection_str} ...")
@@ -69,9 +79,10 @@ if __name__ == '__main__':
       if not msg:
         continue
       if msg.get_type() == 'GLOBAL_POSITION_INT':
-        rospy.loginfo("Got message: %s GPS_ID: %d ping: %f ms" % (msg.get_type(),input_id, pingms))
+        rospy.loginfo("Got message: %s GPS_ID: %d ping: %f ms base_active: %r" % (msg.get_type(),input_id, pingms, base_updated))
         #print("Message: %s" % msg)
-
+        time_boot_ms=msg.time_boot_ms
+        
         if base_updated:
           N, E, D = geodetic2ned(msg.lat*1.0e-7, msg.lon*1.0e-7, msg.alt*1.0e-3,
                                  base_lat, base_lon, base_alt, ell=None, deg=True)
@@ -92,7 +103,7 @@ if __name__ == '__main__':
         # check if returned NoneType?  
         #print(message)
         bytes=struct.pack(">f", message.param_value)
-        # mavlink decodes everything to float32
+        # mavlink decodes everything to float32 packing?
         input_id = struct.unpack(">I", bytes)[0]
         #print('name: %s\tvalue: %d' %
         #      (message.param_id, input_id))
@@ -101,17 +112,47 @@ if __name__ == '__main__':
         pingms = ping(address)
         #print(res)
 
+        # check modes in heartbeat
+        msg = connection.recv_match(type='HEARTBEAT',
+                                    blocking=True,
+                                    timeout=3)
+        # why does this sometimes return wrong field values?
+        # check if returned NoneType?
+        #print("Message: %s" % msg)
+        base_mode=msg.base_mode
+        custom_mode=msg.custom_mode
+        system_status=msg.system_status
+          
+        # publish status
         if base_updated:
-          status.base_stamp = base_stamp
-          status.time_boot_ms = msg.time_boot_ms
+          status.base_stamp = base_time
+          status.time_boot_ms = time_boot_ms
           status.N = N
           status.E = E
           status.D = D
           status.distance = math.sqrt(N*N+E*E)
           status.ping_ms = pingms
           status.beacon_ID = input_id
+          status.base_mode = base_mode
+          status.custom_mode = custom_mode
+          status.system_status = system_status
           pub.publish(status)
           base_updated = False
-     
+        '''
+        else:
+          status.base_stamp = start_time
+          status.time_boot_ms = time_boot_ms
+          status.N = float("NaN")
+          status.E = float("NaN")
+          status.D = float("NaN")
+          status.distance = float("NaN")
+          status.ping_ms = pingms
+          status.beacon_ID = input_id
+          status.base_mode = base_mode
+          status.custom_mode = custom_mode
+          status.system_status = system_status
+          pub.publish(status)
+        '''
+          
     #shutdown    
     rospy.signal_shutdown('connection closed')
