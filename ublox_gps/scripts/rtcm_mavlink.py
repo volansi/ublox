@@ -8,12 +8,12 @@ from pymavlink import mavutil
 from pymavlink.dialects.v20.common import MAVLink_gps_rtcm_data_message
 
 def read_rtcm():
-  port = rospy.get_param("~port", "/dev/ttyS0")
+  serialport = rospy.get_param("~serialport", "/dev/ttyS0")
   baud = rospy.get_param("~baud", 230400)
-  rospy.loginfo("opening rtcm port: " + port + " at baud %d" % (baud))
+  rospy.loginfo("opening rtcm port: " + serialport + " at baud %d" % (baud))
 
   # open serial port
-  ser = serial.Serial(port, baud, timeout=0.001, inter_byte_timeout=0.0001) 
+  ser = serial.Serial(serialport, baud, timeout=0.001, inter_byte_timeout=0.0001) 
   ser.reset_input_buffer()
   #sio = io.TextIOWrapper(io.BufferedRWPair(ser, ser)) # does readline work wihout this?
   last = rospy.get_rostime()
