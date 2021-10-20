@@ -8,6 +8,7 @@ from pymavlink.dialects.v20.common import MAVLink_global_position_int_message
 import struct
 import subprocess
 from pymap3d import geodetic2ned
+import sys
 
 # monitor distance, ping time, and input ID of UAS
 # allows other nodes to send data based on this info

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+
+        <node name="rtcm_mavlink_sender" pkg="ublox_gps" type="rtcm_mavlink.py" 
+                output="log" respawn="true">
+
+                <param name="serialport" type="str" value="/dev/ttyUSB0"/>
+                <param name="baud" type="int" value="230400"/>
+                <param name="transport_protocol" type="str" value="tcp"/>
+                <param name="address" type="str" value="192.168.168.126"/>
+                <param name="port" type="str" value="5760"/>
+        </node>
+
+</launch>
