@@ -1,0 +1,32 @@
+# HPG 1.13 (ZED-F9P), layer Flash (31/31 items)
+CFG-MSGOUT-NMEA_ID_GGA_UART2            0                              # 0x209100bc, U1, default: 1
+CFG-MSGOUT-NMEA_ID_GLL_UART2            0                              # 0x209100cb, U1, default: 1
+CFG-MSGOUT-NMEA_ID_GSA_UART2            0                              # 0x209100c1, U1, default: 1
+CFG-MSGOUT-NMEA_ID_GSV_UART2            0                              # 0x209100c6, U1, default: 1
+CFG-MSGOUT-NMEA_ID_VTG_UART2            0                              # 0x209100b2, U1, default: 1
+CFG-NMEA-PROTVER                        V21                            # = 21, 0x20930001, E1, default: 41 (V41)
+CFG-NMEA-COMPAT                         true                           # = 1, 0x10930003, L, default: 0 (false)
+CFG-NMEA-FILT_BDS                       true                           # = 1, 0x10930017, L, default: 0 (false)
+CFG-NMEA-OUT_ONLYGPS                    true                           # = 1, 0x10930025, L, default: 0 (false)
+CFG-NMEA-MAINTALKERID                   GP                             # = 1, 0x20930031, E1, default: 0 (AUTO)
+CFG-NMEA-GSVTALKERID                    MAIN                           # = 1, 0x20930032, E1, default: 0 (GNSS)
+CFG-SIGNAL-GPS_ENA                      true                           # = 1, 0x1031001f, L
+CFG-SIGNAL-GPS_L1CA_ENA                 true                           # = 1, 0x10310001, L
+CFG-SIGNAL-GPS_L2C_ENA                  true                           # = 1, 0x10310003, L
+CFG-SIGNAL-SBAS_ENA                     true                           # = 1, 0x10310020, L
+CFG-SIGNAL-SBAS_L1CA_ENA                true                           # = 1, 0x10310005, L
+CFG-SIGNAL-GAL_ENA                      false                          # = 0, 0x10310021, L, default: 1 (true)
+CFG-SIGNAL-GAL_E1_ENA                   false                          # = 0, 0x10310007, L, default: 1 (true)
+CFG-SIGNAL-GAL_E5B_ENA                  false                          # = 0, 0x1031000a, L, default: 1 (true)
+CFG-SIGNAL-BDS_ENA                      false                          # = 0, 0x10310022, L, default: 1 (true)
+CFG-SIGNAL-BDS_B1_ENA                   false                          # = 0, 0x1031000d, L, default: 1 (true)
+CFG-SIGNAL-BDS_B2_ENA                   false                          # = 0, 0x1031000e, L, default: 1 (true)
+CFG-SIGNAL-QZSS_ENA                     false                          # = 0, 0x10310024, L, default: 1 (true)
+CFG-SIGNAL-QZSS_L1CA_ENA                false                          # = 0, 0x10310012, L, default: 1 (true)
+CFG-SIGNAL-QZSS_L1S_ENA                 false                          # = 0, 0x10310014, L
+CFG-SIGNAL-QZSS_L2C_ENA                 false                          # = 0, 0x10310015, L, default: 1 (true)
+CFG-SIGNAL-GLO_ENA                      true                           # = 1, 0x10310025, L
+CFG-SIGNAL-GLO_L1_ENA                   true                           # = 1, 0x10310018, L
+CFG-SIGNAL-GLO_L2_ENA                   true                           # = 1, 0x1031001a, L
+CFG-UART2-BAUDRATE                      115200                         # 0x40530001, U4, default: 38400
+CFG-UART2OUTPROT-NMEA                   true                           # = 1, 0x10760002, L, default: 0 (false)
